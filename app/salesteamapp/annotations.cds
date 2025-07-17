@@ -1,0 +1,1 @@
+using offprice_srv as service from '../../srv/schema';

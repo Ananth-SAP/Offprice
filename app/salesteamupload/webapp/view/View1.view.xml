@@ -1,0 +1,93 @@
+<mvc:View controllerName="salesteamupload.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlnsLupload="sap.m.upload"
+    >
+    <Page id="page" title="Sales Upload">
+    <content>
+    <Table id="idProductsTable" items="{A>/}" growing="true" growingThreshold="8" growingScrollToLoad="true">
+    	<headerToolbar>
+					<OverflowToolbar>
+						<Title
+							text="Generic ({= ${documents>/items}.length})"
+							level="H2"
+						/>
+						<ToolbarSpacer />
+                        	<Button
+			text="Upload File"
+			press="handleUploadPress"/>
+                        <u:FileUploader
+			id="fileUploader"
+			name="myFileUpload"
+			uploadUrl="upload/"
+			tooltip="Upload your file "
+            change="onFileChange"
+			uploadComplete="handleUploadComplete"/>
+                        </OverflowToolbar>
+                        </headerToolbar>
+            <columns>
+                <Column >
+                    <Text text="Year" />
+                </Column>
+                <Column >
+                    <Text text="Month" />
+                </Column>
+                <Column >
+                    <Text text="Style" />
+                </Column>
+                <Column >
+                    <Text text="Style Description" />
+                </Column>
+                <Column hAlign="End">
+                    <Text text="Total Stk" />
+                </Column>
+                <Column hAlign="End">
+                    <Text text="Assigned Qty" />
+                </Column>
+                <Column >
+                    <Text text="WH" />
+                </Column>
+                <Column >
+                    <Text text="Sample" />
+                </Column>
+                <Column >
+                    <Text text="Comments" />
+                </Column>
+                <Column hAlign="End">
+                    <Text text="SAP Price" />
+                </Column>
+                <Column hAlign="End">
+                    <Text text="Approved Price" />
+                </Column>
+                <Column hAlign="End">
+                    <Text text="Lowest Target" />
+                </Column>
+                <Column >
+                    <Text text="Released" />
+                </Column>
+            </columns>
+            <items >
+                <ColumnListItem vAlign="Middle" type="Active" press = ".onItemPress">
+                    <cells>
+                        <Text text="{A>Year}" />
+                        <Text text="{Month}" />
+                        <Text text="{Material}" />
+                        <Text text="{StyleDesc}" />
+                        <ObjectNumber number="{Totalstk}"  />
+                        <ObjectNumber number="{ASSIGN_QTY}" />
+                        <Text text="{WH}" />
+                        <Text text="{SAMPLE}" />
+                        <Text text="{COMMENTS}" />
+                        <ObjectNumber number="{SAP_PRICE}"  />
+                        <ObjectNumber number="{APPROVED_PRICE}"  />
+                        <ObjectNumber number="{LOWEST_TARGET}"  />
+                        <CheckBox  selected="{Released}" />
+                     
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        </content >
+    </Page>
+</mvc:View>

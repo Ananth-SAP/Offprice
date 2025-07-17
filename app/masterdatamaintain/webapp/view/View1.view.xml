@@ -1,0 +1,330 @@
+<mvc:View controllerName="masterdatamaintain.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:m="sap.m"
+    	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+    xmlns:p="sap.m.plugins"
+	xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar"
+    xmlns="sap.ui.table">
+     <f:DynamicPage  class = "sapMTitle sapMTitleStyleAuto sapMTitleNoWrap sapUiSelectable sapMTitleMaxWidth sapMBarChild sapMBarChildFirstChild">
+       <f:header>
+				<f:DynamicPageHeader>
+					<f:content>
+						<fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+								<fb:filterGroupItems>
+								<fb:FilterGroupItem name="YEAR" label="Year" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<m:MultiComboBox
+											name="YEAR"
+											selectionChange=".onSelectionChange"
+											items="{
+												path: '/Year',
+												templateShareable: true
+											}"
+										>
+											<c:Item key="{year}" text="{year}"/>
+										</m:MultiComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="MONTH" label="Month" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<m:MultiComboBox
+											name="MONTH"
+											selectionChange=".onSelectionChange"
+											items="{
+												path: '/Month',
+												templateShareable: true
+											}"
+										>
+											<c:Item key="{ID}" text="{Desc}"/>
+										</m:MultiComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="SEQNO" label="SeqNo" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<m:MultiComboBox
+											name="SeqNo"
+											selectionChange=".onSelectionChange"
+											items="{
+												path: '/Seq',
+												templateShareable: true
+											}"
+										>
+											<c:Item key="{ID}" text="{ID}"/>
+										</m:MultiComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="BRAND" label="Brand" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<m:MultiComboBox
+											name="Brand"
+											selectionChange=".onSelectionChange"
+											items="{
+												path: '/Brand',
+												templateShareable: true
+											}"
+										>
+											<c:Item key="{Desc}" text="{Desc}"/>
+										</m:MultiComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="Gender" label="Gender" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<m:MultiComboBox
+											name="Gender"
+											selectionChange=".onSelectionChange"
+											items="{
+												path: '/Gender',
+												templateShareable: true
+											}"
+										>
+											<c:Item key="{Desc}" text="{Desc}"/>
+										</m:MultiComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="SEGMENT" label="Segment" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<m:MultiComboBox
+											name="SEGMENT"
+											selectionChange=".onSelectionChange"
+											items="{
+												path: '/Segment',
+												templateShareable: true
+											}"
+										>
+											<c:Item key="{Desc}" text="{Desc}"/>
+										</m:MultiComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+
+								</fb:filterGroupItems>
+						</fb:FilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+	   <f:content >
+        	<Table id ="ProductsTable"
+				rows="{A>/}"
+                class="sapUiContentPadding"
+                ariaLabelledBy="title">
+                <extension>
+					<m:OverflowToolbar style="Clear">
+					
+						<m:ToolbarSpacer/>
+							<m:Button 
+						text="Size Breakdown"
+						press="onPress"
+						ariaDescribedBy="acceptButtonDescription genericButtonDescription">
+					<m:layoutData>
+						<m:FlexItemData growFactor="1" />
+					</m:layoutData>
+				</m:Button>
+                	
+						
+					</m:OverflowToolbar>
+				</extension>
+                <columns>
+                   <Column width="4rem">
+						<m:Label text="Year" design = "Bold" />
+						<template>
+							<m:Text text="{A>YEAR}" wrapping="false" />
+						</template>		
+					</Column>
+                    <Column  width="4rem">
+						<m:Label text="Month" design = "Bold" />
+						<template>
+							<m:Text text="{A>MONTH}" wrapping="false" />
+						</template>		
+					</Column>
+					      <Column  width="4rem">
+						<m:Label text="Seq No" design = "Bold" />
+						<template>
+							<m:Text text="{A>SEQNO}" wrapping="false" />
+						</template>		
+					</Column>
+                    <Column width="8rem">
+						<m:Label text="Style" design = "Bold" />
+						<template>
+							<m:Text text="{A>MATERIAL}" wrapping="false" />
+						</template>		
+					</Column>
+                     <Column width="16rem" >
+						<m:Label text="Style Description" design = "Bold" />
+						<template>
+							<m:Text text="{A>STYLE_DESCRIPTION}" wrapping="false" />
+						</template>		
+					</Column>
+                    <Column width="10rem" >
+						<m:Label text="Color"   design = "Bold" />
+						<template>
+							<m:Text text="{A>Color}" wrapping="false" />
+						</template>		
+					</Column>
+                     <Column width="5rem">
+						<m:Label text="DC Map" design = "Bold" />
+						<template>
+							<m:Text text="{A>DCMap}" wrapping="false" />
+						</template>		
+					</Column>
+                    <Column  width="5rem">
+						<m:Label text="DC Desc" design = "Bold" />
+						<template>
+							<m:Text text="{A>DCDesc}" wrapping="false" />
+						</template>		
+					</Column>
+                    <Column hAlign="End" width="7rem">
+						<m:Label text="ATS Stock" design = "Bold" />
+						<template>
+							<m:Label text="{A>atsstock}" />
+						</template>
+					</Column>
+                    <Column hAlign="End" width="7rem">
+						<m:Label text="Released Qty" design = "Bold" />
+						<template>
+							<m:Text text="{A>RELEASED_QTY}" />
+						</template>
+					</Column>
+                      <Column hAlign="End" width="7rem">
+						<m:Label text="Allocated Qty" design = "Bold" />
+						<template>
+							<m:Text text="{A>ASSIGN_QTY}" />
+						</template>
+					</Column>
+                     <Column hAlign="End" width="7rem">
+						<m:Label text="Balance Qty" design = "Bold" />
+						<template>
+							<m:Text text="{A>BALANCE_QTY}" />
+						</template>
+					</Column>
+					
+                    <Column width="27rem">
+						<m:Label text="Link" design = "Bold" />
+						<template>
+							<m:Input value="{A>link}" />
+						</template>
+					</Column>
+                      <Column >
+						<m:Label text="Pic" design = "Bold" />
+						<template>
+								<m:Image src="{A>link}" height = "25px" width="25px"	decorative="false" densityAware="false">
+                                <m:detailBox>
+						<m:LightBox>
+							<m:LightBoxItem
+								imageSrc="{A>link}"
+								
+								title="{STYLE_DESCRIPTION}"
+								/>
+						</m:LightBox>
+					</m:detailBox>
+                                </m:Image>
+						</template>
+					</Column>
+                    <Column width="12rem">
+						<m:Label text="Style Desc" design = "Bold" />
+						<template>
+							<m:Input value="{A>StyleDesc}" />
+						</template>
+					</Column>
+                    <Column width="4rem" >
+						<m:Label text="Sample" design = "Bold" />
+						<template>
+							<m:Input value="{A>SAMPLE}" />
+						</template>
+					</Column>
+                    <Column width="6rem" >
+						<m:Label text="Comments" design = "Bold"  />
+						<template>
+							<m:Input value="{A>COMMENTS}" />
+						</template>
+					</Column>
+                     <Column width="7rem" hAlign="End">
+						<m:Label text="Lowest Target" design = "Bold" />
+						<template>
+							<m:Input value="{A>LOWEST_TARGET}" />
+						</template>
+					</Column>
+                    <Column width="7rem" hAlign="End">
+						<m:Label text="Highest Target" design = "Bold" />
+						<template>
+							<m:Input value="{A>HIGHEST_TARGET}" />
+						</template>
+					</Column>
+                    <Column width="7rem" hAlign="End">
+						<m:Label text="SAP" design = "Bold" />
+						<template>
+							<m:Text text="{A>SAP_PRICE}" />
+						</template>
+					</Column>
+                    <Column width="7rem" hAlign="End">
+						<m:Label text="Finace Approved Price" design = "Bold" />
+						<template>
+							<m:Text text="{A>APPROVED_PRICE}" />
+						</template>
+					</Column>
+                    <Column width="5rem" >
+						<m:Label text="List" design = "Bold" />
+						<template>
+							<m:Text text="{A>LIST}" />
+						</template>
+					</Column>
+                    <Column width="7rem" >
+						<m:Label text="Category" design = "Bold" />
+						<template>
+							<m:Text text="{A>CATAGORY}" />
+						</template>
+					</Column>
+                    <Column width="5rem">
+						<m:Label text="Ssn Yr" design = "Bold" />
+						<template>
+							<m:Text text="{A>SEASONYEAR}" />
+						</template>
+					</Column>
+                    <Column width="5rem">
+						<m:Label text="Ssn" design = "Bold" />
+						<template>
+							<m:Text text="{A>SSN}" />
+						</template>
+					</Column>
+                    <Column width="5rem">
+						<m:Label text="Brand" design = "Bold" />
+						<template>
+							<m:Text text="{A>BRAND}" />
+						</template>
+					</Column>
+                     <Column width="7rem">
+						<m:Label text="Consumer Group" design = "Bold"  />
+						<template>
+							<m:Text text="{A>CUSTOMERGRP}" />
+						</template>
+					</Column>
+                      <Column width="7rem">
+						<m:Label text="Segment" design = "Bold" />
+						<template>
+							<m:Text text="{A>SEGMENT}" />
+						</template>
+					</Column>
+                    <Column width="7rem">
+						<m:Label text="Fit Family" design = "Bold"  />
+						<template>
+							<m:Text text="{A>FITFAMILY}" />
+						</template>
+					</Column>
+                    <Column width="9rem">
+						<m:Label text="Material Group Desc" design = "Bold"  />
+						<template>
+							<m:Text text="{A>MATGRPDESC}" />
+						</template>
+					</Column>
+                    <Column width="8rem">
+						<m:Label text="Retail Grp2" design = "Bold" />
+						<template>
+							<m:Text text="{A>RETAILGRP2}" />
+						</template>
+					</Column>
+                </columns>
+            </Table>
+        </f:content>
+		
+    </f:DynamicPage>
+</mvc:View>
